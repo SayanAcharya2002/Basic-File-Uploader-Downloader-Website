@@ -1,0 +1,13 @@
+body {
+  background-image: url('background.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+
+label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size:large;
+  font-weight: 600;
+}

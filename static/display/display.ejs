@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./display.css" rel="stylesheet">
+</head>
+<body>
+
+  <%- include ('../partials/header') %>
+
+  <table id="table" >
+    <tr id="table_heading" >
+      <th> Name  </th>
+      <th> Content </th>
+      <th> Deletion Button </th> 
+      <th> Download Button </th>
+    </tr>
+    <% for(let k in dict) {%>
+      <tr align="center">
+        <td> <%=k %>  </td>
+        <td> <img src="<%= dict[k]%>" alt="<%= dict[k]%>" height=300 width=300> </td>
+        <% if (is_manager) { %>
+          <td> <button id="id_delete_<%= k%>" class="delete_button" name="<%= k%>">Delete</button> </td> 
+        <%} else { %>
+          <td> <button id="id_delete_<%= k%>" class="delete_button" name="<%= k%>" disabled="true">Delete</button> </td> 
+        <% } %>
+        
+        <td> <button id="id_download_<%= k%>" class="download_button" name="<%= k%>"><a href="/download/<%= k%>" download="<%= k%>">Download</a> </button> </td> 
+      </tr>
+    <%}%>
+  </table>
+  
+  <script>
+    let delete_buttons=document.querySelectorAll(".delete_button");
+    delete_buttons.forEach((b)=>{
+      b.addEventListener('click',async (e)=>{
+        let res= await fetch('/delete/'+b.name,{
+          method:'GET',
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
+          // body:JSON.stringify({
+          //   file_name:b.name
+          // }),
+        });
+
+        // alert('file deleted');
+        location.reload();
+      });
+      
+    });
+  </script>
+
+</body>
+</html>

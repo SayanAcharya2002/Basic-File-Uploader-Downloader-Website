@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login page</title>  
+  <link href="./signup.css" rel="stylesheet">
+  <script src="./signup.js"></script>
+
+</head>
+<body>
+  <h1>SIGN UP</h1>
+  <form id="signup_form">
+    <label for="username_value">Username</label>
+    <input type="text" id="username_id" name="username_value">
+    <br><br>
+    <label for="password_value">Password</label>
+    <input type="password" id="password_id" name="password_value">
+    <br><br>
+    <span id="error_span"></span>
+    <br><br>
+    <input type="submit" value="Signup!!!">
+  </form>
+
+  <script>
+    
+let signup_form=document.getElementById('signup_form');
+let error_span=document.getElementById('error_span');
+signup_form.addEventListener('submit',async (e)=>{
+  e.preventDefault();
+  error_span.textContent='';
+  let res=await fetch('/signup',{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body:JSON.stringify({
+      email: document.getElementById('username_id').value,
+      password: document.getElementById('password_id').value
+    }), 
+  });
+
+  let data=await res.json();
+  if(data.ok){
+    location.assign('/home');
+  }else{
+    error_span.textContent=data.error;
+  }
+})
+  </script>
+  
+</body>
+</html>

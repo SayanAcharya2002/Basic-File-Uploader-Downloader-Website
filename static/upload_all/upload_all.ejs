@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./upload_all.css" rel="stylesheet">
+</head>
+<body>
+  <%- include ('../partials/header') %>
+  <form id="form_id" action="/upload_all" method="post" enctype="multipart/form-data">
+    <label for="username">Input Id for whom you want to upload</label>
+    <br><br>
+    <input type="text" name="username" id="username">
+    <br><br>
+    <label for="file">Upload the file</label>
+    <br><br>
+    <input type="file" name="file" id="file">
+    <br><br>
+    <input type="submit">
+  </form>
+  <span id="msg_span"><%=msg%></span>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+body {
+  background-image: url('background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 40px;
+  color:rgb(229, 120, 11);
+}
+
+input[type=file] {
+  color: rgb(4, 255, 109);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+input[type=submit] {
+  color: rgb(48, 19, 207);
+  font-weight: bold;
+  font-size: 15px;
+}
